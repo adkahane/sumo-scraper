@@ -31,7 +31,7 @@ app.get("/scrape", function(req,res) {
   axios.get("https://www.japantimes.co.jp/sports/sumo/").then(function(response) {
     var $ = cheerio.load(response.data);
     // Grab article info and save to result object
-    $("article h2").each(function(i, element) {
+    $("content_col h1").each(function(i, element) {
       var result = {};
       result.title = $(this)
         .children("a")
