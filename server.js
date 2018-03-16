@@ -24,8 +24,9 @@ app.use(express.static("public"));
 
 // Set mongoose to use promises
 // Connect to Mongo DB
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/sumo_db";
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/sumo_db", {
+mongoose.connect(MONGODB_URI, {
   useMongoClient: true
 });
 
@@ -63,8 +64,6 @@ app.get("/scrape", function(req,res) {
         .catch(function(err) {
           return res.json(err);
         });
-
-      res.render("index", result);
     });
     console.log("Scrape Complete");
   });
@@ -81,6 +80,13 @@ app.get("/articles", function(req, res) {
     .catch(function(err) {
       // If an error occurred, send it to the client
       res.json(err);
+    });
+});
+
+app.get("/", function(req, res) {
+  db.Article.find({})
+    .then(function(dbArticle) {
+      res.render("index", dbArticle);
     });
 });
 
