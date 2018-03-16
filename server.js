@@ -31,14 +31,25 @@ app.get("/scrape", function(req,res) {
   axios.get("https://www.japantimes.co.jp/sports/sumo/").then(function(response) {
     var $ = cheerio.load(response.data);
     // Grab article info and save to result object
-    $("content_col h1").each(function(i, element) {
+    $("article").each(function(i, element) {
       var result = {};
       result.title = $(this)
+        .children("figure")
         .children("a")
-        .text();
+        .attr("title");
       result.link = $(this)
+        .children("figure")
         .children("a")
         .attr("href");
+      result.photo = $(this)
+        .children("a")
+        .children("img")
+        .attr("src");
+      result.sum = $(this)
+        .children("div")
+        .children("p")
+        .text().trim();
+      console.log(result.sum);
 
       // Create a new Article in the DB
       db.Article.create(result)
