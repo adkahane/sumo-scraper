@@ -2,7 +2,7 @@
 $.getJSON("/articles", function(data) {
   // For each one
   for (var i = 0; i < data.length; i++) {
-    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+    $("#articles").append("<a href='" + data[i].link + "'>Read Full Article</a><br/><h2>" + data[i].title + "</h2><br /><img src='" + data[i].photo + "' alt='article image' height='350' width='100%'><br/><p data-id='" + data[i]._id + "'>" + data[i].sum + "</p>");
   }
   console.log("success");
 });

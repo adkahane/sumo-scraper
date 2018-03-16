@@ -48,9 +48,11 @@ app.get("/scrape", function(req,res) {
         .children("a")
         .attr("href");
       result.photo = $(this)
+        .children("figure")
         .children("a")
         .children("img")
         .attr("src");
+        console.log(result.photo);
       result.sum = $(this)
         .children("div")
         .children("p")
