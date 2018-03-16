@@ -10,6 +10,11 @@ var PORT = 3000;
 
 var app = express();
 
+// Set up Handlebars
+var exphbs = require("express-handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main"}));
+app.set("view engine", "handlebars");
+
 // Configure morgan logger
 app.use(logger("dev"));
 // body-parser for handling form submissions
@@ -49,7 +54,6 @@ app.get("/scrape", function(req,res) {
         .children("div")
         .children("p")
         .text().trim();
-      console.log(result.sum);
 
       // Create a new Article in the DB
       db.Article.create(result)
@@ -59,6 +63,8 @@ app.get("/scrape", function(req,res) {
         .catch(function(err) {
           return res.json(err);
         });
+
+      res.render("index", result);
     });
     console.log("Scrape Complete");
   });
