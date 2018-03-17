@@ -42,6 +42,16 @@ $(document).on("click", "p", function() {
     });
 });
 
+// When you click the scrape button
+$(document).on("click", "#scrape", function() {
+  $.ajax({
+    url: "/scrape",
+  })
+  .then(function(data) {
+    location.reload();
+  });
+});
+
 // When you click the savenote button
 $(document).on("click", "#savenote", function() {
   // Grab the id associated with the article from the submit button
