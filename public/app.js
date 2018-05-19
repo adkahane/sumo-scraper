@@ -1,8 +1,22 @@
 // Grab the articles as a json
 $.getJSON("/articles", function(data) {
-  // For each one
-  for (var i = 0; i < data.length; i++) {
-    $("#articles").append("<a href='" + data[i].link + "'>Read Full Article</a><br/><h2>" + data[i].title + "</h2><br /><img src='" + data[i].photo + "' alt='article image' height='350' width='100%'><br/><p data-id='" + data[i]._id + "'>" + data[i].sum + "</p>");
+  // Append the articles to the DOM
+  // for (var i = 0; i < data.length; i++) {
+  //   $("#articles").append("<a href='" + data[i].link + "'>Read Full Article</a><br/><h2>" + data[i].title + "</h2><br /><img src='" + data[i].photo + "' alt='article image' height='350' width='auto'><br/><p data-id='" + data[i]._id + "'>" + data[i].sum + "</p>");
+  // }
+  // console.log("success");
+
+  for(var i = 0; i < data.length; i++) {
+    $("#articles").append(
+      "<div class='card' style='width: auto;'>" + 
+        "<img class='card-img-top' src='" + data[i].photo + "' alt='Sumo Image Not Found'>" +
+        "<div class='card-body'>" +
+          "<h5 class='card-title'>" + data[i].title + "</h5>" +
+          "<p class='card-text'><p data-id='" + data[i]._id + "'>" + data[i].sum + "</p>" + "</p>" +
+          "<a href='" + data[i].link + "' class='btn btn-primary'>Full Article</a>" +
+        "</div>" +
+      "</div>"
+    );
   }
   console.log("success");
 });

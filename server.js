@@ -30,7 +30,11 @@ mongoose.connect(MONGODB_URI, {
   useMongoClient: true
 });
 
-// Routes
+// Routes  to delete articles from the database
+app.delete("/scrape", function(req,res) {
+  db.Article.remove({});
+  console.log("deleted");
+});
 
 // GET route scrapes JapanTimes for sumo news
 app.get("/scrape", function(req,res) {
