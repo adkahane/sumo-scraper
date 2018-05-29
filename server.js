@@ -30,14 +30,14 @@ mongoose.connect(MONGODB_URI, {
   useMongoClient: true
 });
 
-// Routes  to delete articles from the database
-app.delete("/scrape", function(req,res) {
-  db.Article.remove({});
-  console.log("deleted");
-});
-
 // GET route scrapes JapanTimes for sumo news
 app.get("/scrape", function(req,res) {
+  
+  // Drop articles from DB before scraping new ones
+  mongoose.connection.collections["articles"].drop(function(err) {
+    console.log("Collection Dropped");
+  });
+
   axios.get("https://www.japantimes.co.jp/sports/sumo/").then(function(response) {
     var $ = cheerio.load(response.data);
     // Grab article info and save to result object
