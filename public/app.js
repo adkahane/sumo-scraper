@@ -21,7 +21,17 @@ $.getJSON("/articles", function(data) {
   console.log("success");
 });
 
+// When you click the scrape button
+$(document).on("click", "#scrape", function() {
+  $.ajax({
+    url: "/scrape",
+  })
+  .then(function(data) {
+    location.reload();
+  });
+});
 
+/*
 // Whenever someone clicks a p tag
 $(document).on("click", "p", function() {
   // Empty the notes from the note section
@@ -54,17 +64,7 @@ $(document).on("click", "p", function() {
         $("#bodyinput").val(data.note.body);
       }
     });
-});
-
-// When you click the scrape button
-$(document).on("click", "#scrape", function() {
-  $.ajax({
-    url: "/scrape",
-  })
-  .then(function(data) {
-    location.reload();
-  });
-});
+}); 
 
 // When you click the savenote button
 $(document).on("click", "#savenote", function() {
@@ -93,4 +93,4 @@ $(document).on("click", "#savenote", function() {
   // Also, remove the values entered in the input and textarea for note entry
   $("#titleinput").val("");
   $("#bodyinput").val("");
-});
+}); */
