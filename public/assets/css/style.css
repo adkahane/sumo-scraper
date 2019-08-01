@@ -32,3 +32,15 @@ textarea {
   height: 200px;
   font-size: 18px;
 }
+.card {
+  width: 40%;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 25px;
+}
+#scrape {
+  width: 40%;
+  margin-right: auto;
+  margin-left: auto;
+}

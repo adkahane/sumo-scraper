@@ -8,7 +8,7 @@ $.getJSON("/articles", function(data) {
 
   for(var i = 0; i < data.length; i++) {
     $("#articles").append(
-      "<div class='card' style='width: auto;'>" + 
+      "<div class='card'>" + 
         "<img class='card-img-top' src='" + data[i].photo + "' alt='Sumo Image Not Found'>" +
         "<div class='card-body'>" +
           "<h5 class='card-title'>" + data[i].title + "</h5>" +

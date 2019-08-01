@@ -44,9 +44,12 @@ app.get("/scrape", function(req,res) {
     $("article").each(function(i, element) {
       var result = {};
       result.title = $(this)
-        .children("figure")
+        .children("div")
+        .children("header")
+        .children("hgroup")
+        .children("p")
         .children("a")
-        .attr("title");
+        .text();
       result.link = $(this)
         .children("figure")
         .children("a")
@@ -56,7 +59,6 @@ app.get("/scrape", function(req,res) {
         .children("a")
         .children("img")
         .attr("src");
-        console.log(result.photo);
       result.sum = $(this)
         .children("div")
         .children("p")
@@ -68,7 +70,6 @@ app.get("/scrape", function(req,res) {
           console.log(dbArticle);
         })
         .catch(function(err) {
-          console.log("MADE IT HERE")
           return res.json(err);
         });
     });
