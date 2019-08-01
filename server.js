@@ -27,7 +27,7 @@ app.use(express.static("public"));
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/sumo_db";
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, {
-  useMongoClient: true
+  useNewUrlParser: true
 });
 
 // GET route scrapes JapanTimes for sumo news
@@ -68,6 +68,7 @@ app.get("/scrape", function(req,res) {
           console.log(dbArticle);
         })
         .catch(function(err) {
+          console.log("MADE IT HERE")
           return res.json(err);
         });
     });
