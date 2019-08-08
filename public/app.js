@@ -1,11 +1,6 @@
 // Grab the articles as a json
 $.getJSON("/articles", function(data) {
   // Append the articles to the DOM
-  // for (var i = 0; i < data.length; i++) {
-  //   $("#articles").append("<a href='" + data[i].link + "'>Read Full Article</a><br/><h2>" + data[i].title + "</h2><br /><img src='" + data[i].photo + "' alt='article image' height='350' width='auto'><br/><p data-id='" + data[i]._id + "'>" + data[i].sum + "</p>");
-  // }
-  // console.log("success");
-
   for(var i = 0; i < data.length; i++) {
     $("#articles").append(
       "<div class='card'>" + 
