@@ -25,7 +25,8 @@
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "mongoose": ">=5.7.5",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "simple-parallax-js": "^5.2.0"
   },
   "devDependencies": {
     "cypress": "^3.4.1"

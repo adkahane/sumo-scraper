@@ -1,3 +1,5 @@
+//import simpleParallax from "simple-parallax-js";
+
 // Grab the articles as a json
 $.getJSON("/articles", function(data) {
   // Append the articles to the DOM
@@ -14,6 +16,10 @@ $.getJSON("/articles", function(data) {
     );
   }
   console.log("success");
+  
+    // Add parallax to the news images
+    var images = document.querySelectorAll('img');
+    new simpleParallax(images);
 });
 
 // When you click the scrape button
